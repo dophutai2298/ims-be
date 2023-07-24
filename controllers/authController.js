@@ -38,12 +38,12 @@ const login = (req, res) => {
   const passwordMd5 = md5(req.body.password);
   const countUser = user.length;
   for (let i = 0; i < countUser; i++) {
-    if (username === user[i].userName && passwordMd5 === user[i].password) {
+    if (username === user[i].username && passwordMd5 === user[i].password) {
       const accessToken = generate(username, password);
       return res.status(statusCodes.OK).json({ accessToken });
     }
   }
-  return res.status(statusCodes.BAD_REQUEST).json({ error: "Incorrect userName or password" });
+  return res.status(statusCodes.BAD_REQUEST).json({ error: "Incorrect username or password" });
 };
 
 const profile = (req, res) => {
